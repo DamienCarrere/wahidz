@@ -1,3 +1,4 @@
+
 name: wahidz
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
@@ -87,4 +88,4 @@ flutter:
   #         weight: 700
   #
   # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package
+  # see https://flutter.dev/to/font-from-packag
