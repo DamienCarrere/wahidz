@@ -20,18 +20,21 @@ class _HomeState extends State<Home> {
           children: [
             InkWell(
               onTap: () {
+                Navigator.pop(context);
                 Navigator.pushNamed(context, '/home');
               },
               child: Text('Home'),
             ),
             InkWell(
               onTap: () {
+                Navigator.pop(context);
                 Navigator.pushNamed(context, '/cart');
               },
               child: Text('Cart'),
             ),
             InkWell(
               onTap: () {
+                Navigator.pop(context);
                 Navigator.pushNamed(context, '/categories');
               },
               child: Text('Categories'),
