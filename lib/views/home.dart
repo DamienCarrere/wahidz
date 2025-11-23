@@ -15,61 +15,26 @@ class _HomeState extends State<Home> {
         title: Center(child: Text("HOME")),
         backgroundColor: Colors.orangeAccent,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            InkWell(
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/home');
-              },
-              child: Text('Home'),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/cart');
-              },
-              child: Text('Cart'),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/categories');
-              },
-              child: Text('Categories'),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/categories');
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.home),
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/home');
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.shopping_cart),
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/cart');
-              },
-            ),
-          ],
-        ),
+      // body:
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.orange,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.menu), label: "Catégories"),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: "Panier",
+          ),
+        ],
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.pushReplacementNamed(context, '/categories');
+          } else if (index == 1) {
+            Navigator.pushReplacementNamed(context, '/home');
+          } else if (index == 2) {
+            Navigator.pushReplacementNamed(context, '/cart');
+          }
+        },
       ),
     );
   }
