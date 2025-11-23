@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wahidz/models/product.dart';
 import 'package:wahidz/widgets/bottom_nav_bar.dart';
 
 class Home extends StatefulWidget {
