@@ -16,4 +16,15 @@ class ProductRepo {
       throw Exception("Erreur lors du chargement des produits");
     }
   }
+
+  Future<Product> fetchProductById(int id) async {
+    final Uri endpoint = Uri.parse("https://dummyjson.com/products/$id");
+    final response = await http.get(endpoint);
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return Product.fromJson(data);
+    } else {
+      throw Exception("Oups, il y a eu une erreur");
+    }
+  }
 }
