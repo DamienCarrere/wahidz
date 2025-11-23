@@ -19,6 +19,7 @@ class ProductViewModel extends ChangeNotifier {
       products = await product.fetchProducts();
     } catch (e) {
       error = "Erreur lors du chargement: $e";
+      products = [];
     }
 
     isLoading = false;
