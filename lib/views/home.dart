@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wahidz/widgets/bottom_nav_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,7 +16,7 @@ class _HomeState extends State<Home> {
         title: Center(child: Text("HOME")),
         backgroundColor: Colors.orangeAccent,
       ),
-
+      bottomNavigationBar: const BottomNavBar(currentIndex: 1),
       // body:
     );
   }
