@@ -6,6 +6,8 @@ class Product {
   final double price;
   final double discountPercentage;
   final String description;
+  final List<String> images;
+  final String thumbnail;
 
   Product({
     required this.id,
@@ -15,6 +17,8 @@ class Product {
     required this.price,
     required this.discountPercentage,
     required this.description,
+    required this.images,
+    required this.thumbnail,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -26,6 +30,8 @@ class Product {
       price: (json["price"] as num).toDouble(),
       discountPercentage: (json["discountPercentage"] as num).toDouble(),
       description: json["description"],
+      images: List<String>.from(json["images"]),
+      thumbnail: json["thumbnail"],
     );
   }
 }
