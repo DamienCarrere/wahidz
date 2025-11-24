@@ -4,7 +4,7 @@ import 'package:wahidz/view_model/product_vm.dart';
 import 'package:wahidz/views/cart.dart';
 import 'package:wahidz/views/categories.dart';
 import 'package:wahidz/views/home.dart';
-import 'package:wahidz/views/product.dart';
+import 'package:wahidz/views/product_detail.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/home',
       routes: {
         '/home': (context) => const Home(),
-        '/product': (context) => const Product(),
+        '/product_detail': (context) => const ProductDetail(),
         '/cart': (context) => const Cart(),
         '/categories': (context) => const Categories(),
       },

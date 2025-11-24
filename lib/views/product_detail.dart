@@ -2,15 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wahidz/view_model/product_vm.dart';
 import 'package:wahidz/view_model/myCart.dart';
+import 'package:wahidz/widgets/bottom_nav_bar.dart';
 
-class Product extends StatefulWidget {
-  const Product({super.key});
+class ProductDetail extends StatefulWidget {
+  const ProductDetail({super.key});
 
   @override
-  State<Product> createState() => _ProductState();
+  State<ProductDetail> createState() => _ProductDetailState();
 }
 
-class _ProductState extends State<Product> {
+class _ProductDetailState extends State<ProductDetail> {
+  bool load = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (!load) {
+      load = true;
+
+      final int id = ModalRoute.of(context)!.settings.arguments as int;
+
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+
+        Provider.of<ProductViewModel>(
+          context,
+          listen: false,
+        ).fetchProductById(id);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final vm = Provider.of<ProductViewModel>(context);
@@ -18,9 +41,11 @@ class _ProductState extends State<Product> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Product"),
+        title: const Center(child: Text("Home")),
         backgroundColor: Colors.orangeAccent,
       ),
+
+      bottomNavigationBar: BottomNavBar(currentIndex: 1),
       body: Center(
         child: vm.isLoading
             ? const CircularProgressIndicator()
