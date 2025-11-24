@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wahidz/widgets/appbar_widget.dart';
 import 'package:wahidz/widgets/bottom_nav_bar.dart';
 
 class Cart extends StatefulWidget {
@@ -12,10 +13,7 @@ class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text("CART")),
-        backgroundColor: Colors.orangeAccent,
-      ),
+      appBar: AppBarWidget("Panier"),
       body: Center(
         child: Column(
           children: [
