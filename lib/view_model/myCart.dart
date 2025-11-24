@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 
-bool isLoading = false;
+class MyCart extends ChangeNotifier {
+  bool isLoading = false;
 
-List<Product> myCart = [];
+  final List<Product> myCart = [];
 
-class Mycart extends ChangeNotifier {
-  Future<List<Product>> addCart(Product product) async {
+  Future<List<Product>> addCart(Product product, {int quantity = 1}) async {
     try {
       isLoading = true;
       notifyListeners();
 
-      myCart.add(product);
+      for (int i = 0; i < quantity; i++) {
+        myCart.add(product);
+      }
 
       isLoading = false;
       notifyListeners();

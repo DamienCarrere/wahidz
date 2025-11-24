@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wahidz/view_model/product_vm.dart';
+import 'package:wahidz/view_model/myCart.dart';
 import 'package:wahidz/widgets/bottom_nav_bar.dart';
+
+
 
 class ProductDetail extends StatefulWidget {
   const ProductDetail({super.key});
@@ -78,6 +81,20 @@ class _ProductDetailState extends State<ProductDetail> {
                     const SizedBox(height: 8),
                     Text(product.description),
                     const SizedBox(height: 12),
+                    if (product.images.isNotEmpty) ...[
+                      const Text('Images:'),
+                      const SizedBox(height: 8),
+                    ],
+                    ElevatedButton(
+                      onPressed: () async {
+                        await Provider.of<MyCart>(
+                          context,
+                          listen: false,
+                        ).addCart(product);
+                        Navigator.pushNamed(context, '/cart');
+                      },
+                      child: const Text('Ajouter au panier'),
+                    ),
                   ],
                 ),
               ),
