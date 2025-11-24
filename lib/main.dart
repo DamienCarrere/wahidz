@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wahidz/view_model/myCart.dart';
 import 'package:wahidz/view_model/product_vm.dart';
 import 'package:wahidz/views/cart.dart';
 import 'package:wahidz/views/categories.dart';
@@ -8,8 +9,13 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => ProductViewModel()..fetchProducts(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ProductViewModel()..fetchProducts(),
+        ),
+        ChangeNotifierProvider(create: (_) => MyCart()),
+      ],
       child: const MyApp(),
     ),
   );
