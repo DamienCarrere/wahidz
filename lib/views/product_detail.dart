@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:wahidz/view_model/product_vm.dart';
 import 'package:wahidz/view_model/myCart.dart';
 import 'package:wahidz/widgets/bottom_nav_bar.dart';
-import 'package:wahidz/view_model/myCart.dart';
+
+
 
 class ProductDetail extends StatefulWidget {
   const ProductDetail({super.key});
