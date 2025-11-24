@@ -7,6 +7,8 @@ class ProductViewModel extends ChangeNotifier {
 
   List<Product> products = [];
 
+  Product? selectedProduct;
+
   bool isLoading = false;
 
   String error = "";
@@ -24,5 +26,24 @@ class ProductViewModel extends ChangeNotifier {
 
     isLoading = false;
     notifyListeners();
+  }
+
+  Future<Product?> fetchProductById(int id) async {
+    Product? result;
+    try {
+      isLoading = true;
+      notifyListeners();
+
+      result = await product.fetchProductById(id);
+      selectedProduct = result;
+    } catch (e) {
+      error = "Erreur lors du chargement du produit: $e";
+      result = null;
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+
+    return result;
   }
 }
