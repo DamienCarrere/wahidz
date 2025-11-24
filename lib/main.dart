@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => const Home(),
         '/product_detail': (context) => const ProductDetail(),
-        '/cart': (context) => const Cart(),
+        '/cart': (context) => Cart(),
         '/categories': (context) => const Categories(),
       },
       title: 'Wahidz',
