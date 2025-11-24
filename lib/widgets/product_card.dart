@@ -3,14 +3,15 @@ import 'package:wahidz/models/product.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
-  final VoidCallback? onTap;
 
-  const ProductCard({super.key, required this.product, this.onTap});
+  const ProductCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: () {
+        Navigator.pushNamed(context, '/product_detail', arguments: product.id);
+      },
       child: Card(
         elevation: 3,
         margin: const EdgeInsets.all(8),
