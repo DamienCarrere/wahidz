@@ -4,8 +4,6 @@ import 'package:wahidz/view_model/product_vm.dart';
 import 'package:wahidz/view_model/myCart.dart';
 import 'package:wahidz/widgets/bottom_nav_bar.dart';
 
-
-
 class ProductDetail extends StatefulWidget {
   const ProductDetail({super.key});
 
@@ -43,7 +41,7 @@ class _ProductDetailState extends State<ProductDetail> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text("Home")),
+        title: const Center(child: Text("Détail")),
         backgroundColor: Colors.orangeAccent,
       ),
 

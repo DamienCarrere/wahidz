@@ -67,7 +67,7 @@ class ProductCard extends StatelessWidget {
                   Text(
                     "Stock: ${product.stock}",
                     style: TextStyle(
-                      color: product.stock > 5 ? Colors.black54 : Colors.red,
+                      color: product.stock > 5 ? Colors.black45 : Colors.red,
                     ),
                   ),
                 ],
