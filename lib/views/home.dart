@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wahidz/view_model/product_vm.dart';
+import 'package:wahidz/widgets/appbar_widget.dart';
 import 'package:wahidz/widgets/product_card.dart';
 import 'package:wahidz/widgets/bottom_nav_bar.dart';
 
@@ -12,10 +13,7 @@ class Home extends StatelessWidget {
     final vm = context.watch<ProductViewModel>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("Home")),
-        backgroundColor: Colors.orangeAccent,
-      ),
+      appBar: AppBarWidget("Home"),
 
       bottomNavigationBar: BottomNavBar(currentIndex: 1),
 

@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wahidz/view_model/product_vm.dart';
 import 'package:wahidz/view_model/myCart.dart';
+import 'package:wahidz/widgets/appbar_widget.dart';
 import 'package:wahidz/widgets/bottom_nav_bar.dart';
-
-
 
 class ProductDetail extends StatefulWidget {
   const ProductDetail({super.key});
@@ -42,10 +41,7 @@ class _ProductDetailState extends State<ProductDetail> {
     final product = vm.selectedProduct;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("Home")),
-        backgroundColor: Colors.orangeAccent,
-      ),
+      appBar: AppBarWidget("Détail"),
 
       bottomNavigationBar: BottomNavBar(currentIndex: 1),
       body: Center(
@@ -74,7 +70,9 @@ class _ProductDetailState extends State<ProductDetail> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Text('Catégorie: ${product.category}'),
+                    Text(
+                      'Catégorie: ${product.category[0].toUpperCase() + product.category.substring(1)}',
+                    ),
                     Text('Prix: \$${product.price.toStringAsFixed(2)}'),
                     Text('Réduction: ${product.discountPercentage}%'),
                     Text('Stock: ${product.stock}'),

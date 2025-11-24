@@ -46,4 +46,16 @@ class ProductViewModel extends ChangeNotifier {
 
     return result;
   }
+
+  List<String> get categories {
+    final setCat = <String>{};
+    for (var p in products) {
+      setCat.add(p.category);
+    }
+    return setCat.toList();
+  }
+
+  List<Product> productsByCategory(String category) {
+    return products.where((p) => p.category == category).toList();
+  }
 }
