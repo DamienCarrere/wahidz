@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wahidz/view_model/myCart.dart';
+import 'package:wahidz/widgets/appbar_widget.dart';
+import 'package:wahidz/widgets/bottom_nav_bar.dart';
 
 class Cart extends StatelessWidget {
   Cart({super.key});
@@ -10,10 +12,7 @@ class Cart extends StatelessWidget {
     final cart = Provider.of<MyCart>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Panier'),
-        backgroundColor: Colors.orangeAccent,
-      ),
+      appBar: AppBarWidget("Panier"),
       body: cart.isLoading
           ? const Center(child: CircularProgressIndicator())
           : cart.myCart.isEmpty
