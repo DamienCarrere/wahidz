@@ -20,7 +20,6 @@ class ProductCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Image
             ClipRRect(
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(12),
@@ -33,13 +32,11 @@ class ProductCard extends StatelessWidget {
               ),
             ),
 
-            // Contenu
             Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Titre (ajout AutoSizeText pour auto redimensionnement)
                   AutoSizeText(
                     product.title,
                     maxLines: 2,
@@ -53,7 +50,6 @@ class ProductCard extends StatelessWidget {
 
                   const SizedBox(height: 6),
 
-                  // Prix
                   Text(
                     "${product.price.toStringAsFixed(2)} €",
                     style: const TextStyle(
@@ -65,7 +61,6 @@ class ProductCard extends StatelessWidget {
 
                   const SizedBox(height: 4),
 
-                  // Stock
                   Text(
                     "Stock: ${product.stock}",
                     style: TextStyle(
