@@ -13,8 +13,6 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-  bool _isCheckingOut = false;
-
   @override
   void dispose() {
     super.dispose();
@@ -29,7 +27,7 @@ class _CartState extends State<Cart> {
     }
 
     final subtotal = cart.totalPrice;
-    final total = subtotal; // sans remise
+    final total = subtotal;
 
     final chosen = await showModalBottomSheet<String>(
       context: context,
@@ -56,11 +54,13 @@ class _CartState extends State<Cart> {
             ListTile(
               leading: const Icon(Icons.account_balance_wallet),
               title: const Text('Apple Pay / Wallet'),
+              subtitle: Text('\$${total.toStringAsFixed(2)}'),
               onTap: () => Navigator.of(context).pop('wallet'),
             ),
             ListTile(
               leading: const Icon(Icons.paypal),
               title: const Text('PayPal'),
+              subtitle: Text('\$${total.toStringAsFixed(2)}'),
               onTap: () => Navigator.of(context).pop('paypal'),
             ),
             const SizedBox(height: 8),
@@ -78,11 +78,7 @@ class _CartState extends State<Cart> {
 
     if (chosen == null) return;
 
-    setState(() => _isCheckingOut = true);
-    // Simuler le processus de paiement
-    await Future.delayed(const Duration(seconds: 1));
     await cart.clearCart();
-    setState(() => _isCheckingOut = false);
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Paiement effectué — merci !')),
@@ -376,7 +372,7 @@ class _CartState extends State<Cart> {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton.icon(
-                            icon: _isCheckingOut
+                            icon: cart.isLoading
                                 ? const SizedBox(
                                     width: 16,
                                     height: 16,
@@ -387,9 +383,9 @@ class _CartState extends State<Cart> {
                                   )
                                 : const Icon(Icons.payment),
                             label: Text(
-                              _isCheckingOut ? 'Traitement...' : 'Payer',
+                              cart.isLoading ? 'Traitement...' : 'Payer',
                             ),
-                            onPressed: _isCheckingOut
+                            onPressed: cart.isLoading
                                 ? null
                                 : () => _startPayment(cart),
                           ),
