@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:wahidz/models/product.dart';
 
 class ProductCard extends StatelessWidget {
@@ -19,7 +20,6 @@ class ProductCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Image
             ClipRRect(
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(12),
@@ -32,14 +32,12 @@ class ProductCard extends StatelessWidget {
               ),
             ),
 
-            // Contenu
             Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Titre
-                  Text(
+                  AutoSizeText(
                     product.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -47,11 +45,11 @@ class ProductCard extends StatelessWidget {
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
                     ),
+                    minFontSize: 10,
                   ),
 
                   const SizedBox(height: 6),
 
-                  // Prix
                   Text(
                     "${product.price.toStringAsFixed(2)} €",
                     style: const TextStyle(
@@ -63,7 +61,6 @@ class ProductCard extends StatelessWidget {
 
                   const SizedBox(height: 4),
 
-                  // Stock
                   Text(
                     "Stock: ${product.stock}",
                     style: TextStyle(

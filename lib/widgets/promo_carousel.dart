@@ -63,7 +63,7 @@ class PromoCarousel extends StatelessWidget {
                     Text(
                       "-${product.discountPercentage.toStringAsFixed(0)}%",
                       style: const TextStyle(
-                        color: Colors.orange,
+                        color: Color(0xFFFF9900),
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),

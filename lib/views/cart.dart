@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wahidz/view_model/myCart.dart';
 import 'package:wahidz/widgets/appbar_widget.dart';
 import 'package:wahidz/widgets/bottom_nav_bar.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class Cart extends StatelessWidget {
   Cart({super.key});
@@ -86,10 +87,38 @@ class Cart extends StatelessWidget {
                                   color: Colors.redAccent,
                                 ),
                                 tooltip: 'Supprimer',
-                                onPressed: () => cart.removeMycart(
-                                  product,
-                                  quantity: item.quantity,
-                                ),
+                                onPressed: () async {
+                                  final confirmed = await showDialog<bool>(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      title: const Text(
+                                        'Confirmer la suppression',
+                                      ),
+                                      content: Text(
+                                        'Supprimer "${product.title}" du panier ?',
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(false),
+                                          child: const Text('Annuler'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(true),
+                                          child: const Text('Supprimer'),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+
+                                  if (confirmed == true) {
+                                    cart.removeMycart(
+                                      product,
+                                      quantity: item.quantity,
+                                    );
+                                  }
+                                },
                               ),
                             ],
                           ),

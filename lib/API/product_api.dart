@@ -5,7 +5,7 @@ import "../models/product.dart";
 class ProductRepo {
   Future<List<Product>> fetchProducts() async {
     final response = await http.get(
-      Uri.parse("https://dummyjson.com/products?limit=150"),
+      Uri.parse("https://dummyjson.com/products?limit=300"),
     );
 
     if (response.statusCode == 200) {

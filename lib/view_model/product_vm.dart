@@ -9,6 +9,12 @@ class ProductViewModel extends ChangeNotifier {
 
   Product? selectedProduct;
 
+  int selectedQuantity = 1;
+  int selectedImageIndex = 0;
+
+  int get maxQuantity =>
+      selectedProduct != null ? selectedProduct!.stock.toInt() : 9999;
+
   bool isLoading = false;
 
   String error = "";
@@ -36,6 +42,8 @@ class ProductViewModel extends ChangeNotifier {
 
       result = await product.fetchProductById(id);
       selectedProduct = result;
+      selectedQuantity = 1;
+      selectedImageIndex = 0;
     } catch (e) {
       error = "Erreur lors du chargement du produit: $e";
       result = null;
@@ -57,5 +65,29 @@ class ProductViewModel extends ChangeNotifier {
 
   List<Product> productsByCategory(String category) {
     return products.where((p) => p.category == category).toList();
+  }
+
+  void incrementQuantity() {
+    if (selectedProduct == null) return;
+    if (selectedQuantity < maxQuantity) {
+      selectedQuantity += 1;
+      notifyListeners();
+    }
+  }
+
+  void decrementQuantity() {
+    if (selectedQuantity > 1) {
+      selectedQuantity -= 1;
+      notifyListeners();
+    }
+  }
+
+  void setImageIndex(int index) {
+    if (selectedProduct == null) return;
+    if (index < 0) index = 0;
+    final last = selectedProduct!.images.length - 1;
+    if (index > last) index = last;
+    selectedImageIndex = index;
+    notifyListeners();
   }
 }

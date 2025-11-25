@@ -21,7 +21,9 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: currentIndex,
-      selectedItemColor: Colors.orange,
+      selectedItemColor: Color(0xFFFF9900),
+      selectedLabelStyle: const TextStyle(fontFamily: 'Poppins'),
+      unselectedLabelStyle: const TextStyle(fontFamily: 'Poppins'),
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.menu), label: "Catégories"),
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
