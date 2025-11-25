@@ -95,6 +95,16 @@ class _ProductDetailState extends State<ProductDetail> {
                             context,
                             listen: false,
                           ).addCart(product);
+                          if (!mounted) return;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Center(
+                                child: Text(
+                                  'Le produit a été ajouté au panier',
+                                ),
+                              ),
+                            ),
+                          );
                         },
                         child: const Text(
                           'Ajouter au panier',

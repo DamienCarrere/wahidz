@@ -191,7 +191,15 @@ class Cart extends StatelessWidget {
                                         context,
                                       ).showSnackBar(
                                         const SnackBar(
-                                          content: Text('Paiement effectué'),
+                                          content: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Text('Paiement effectué'),
+                                              Text('Merci de votre visite'),
+                                            ],
+                                          ),
                                         ),
                                       );
                                     }
