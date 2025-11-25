@@ -71,4 +71,22 @@ class MyCart extends ChangeNotifier {
 
   double get totalPrice =>
       myCart.fold(0.0, (sum, c) => sum + (c.product.price * c.quantity));
+
+  Future<void> clearCart() async {
+    try {
+      isLoading = true;
+      notifyListeners();
+
+      myCart.clear();
+
+      isLoading = false;
+      notifyListeners();
+    } catch (e) {
+      isLoading = false;
+      notifyListeners();
+      throw Exception(
+        "Une erreur est survenue lors de la suppresion du panier: $e",
+      );
+    }
+  }
 }

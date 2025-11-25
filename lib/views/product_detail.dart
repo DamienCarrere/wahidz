@@ -95,9 +95,16 @@ class _ProductDetailState extends State<ProductDetail> {
                             context,
                             listen: false,
                           ).addCart(product);
-                          Navigator.pushNamed(context, '/cart');
                         },
-                        child: const Text('Ajouter au panier'),
+                        child: const Text(
+                          'Ajouter au panier',
+                          style: TextStyle(color: Colors.amberAccent),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            const Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        ),
                       ),
                     ],
                   ),

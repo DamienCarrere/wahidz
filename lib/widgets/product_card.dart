@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:wahidz/models/product.dart';
 
 class ProductCard extends StatelessWidget {
@@ -38,8 +39,8 @@ class ProductCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Titre
-                  Text(
+                  // Titre (ajout AutoSizeText pour auto redimensionnement)
+                  AutoSizeText(
                     product.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -47,6 +48,7 @@ class ProductCard extends StatelessWidget {
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
                     ),
+                    minFontSize: 10,
                   ),
 
                   const SizedBox(height: 6),
