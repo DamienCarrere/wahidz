@@ -4,6 +4,7 @@ import 'package:wahidz/view_model/product_vm.dart';
 import 'package:wahidz/widgets/appbar_widget.dart';
 import 'package:wahidz/widgets/product_card.dart';
 import 'package:wahidz/widgets/bottom_nav_bar.dart';
+import 'package:wahidz/widgets/promo_carousel.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -33,25 +34,37 @@ class Home extends StatelessWidget {
     if (vm.products.isEmpty) {
       return const Center(child: Text("Aucun produit trouvé"));
     }
-    return ListView.builder(
+    return ListView(
       padding: const EdgeInsets.all(10),
-      itemCount: (vm.products.length / 2).ceil(),
-      itemBuilder: (context, index) {
-        final i = index * 2;
+      children: [
+        PromoCarousel(products: vm.products),
 
-        final left = vm.products[i];
-        final right = (i + 1 < vm.products.length) ? vm.products[i + 1] : null;
+        const SizedBox(height: 20),
 
-        return Row(
-          children: [
-            Expanded(child: ProductCard(product: left)),
-            const SizedBox(width: 10),
-            Expanded(
-              child: right != null ? ProductCard(product: right) : SizedBox(),
+        ...List.generate((vm.products.length / 2).ceil(), (index) {
+          final i = index * 2;
+
+          final left = vm.products[i];
+          final right = (i + 1 < vm.products.length)
+              ? vm.products[i + 1]
+              : null;
+
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: Row(
+              children: [
+                Expanded(child: ProductCard(product: left)),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: right != null
+                      ? ProductCard(product: right)
+                      : const SizedBox(),
+                ),
+              ],
             ),
-          ],
-        );
-      },
+          );
+        }),
+      ],
     );
   }
 }
