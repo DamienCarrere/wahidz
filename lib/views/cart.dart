@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wahidz/view_model/myCart.dart';
 import 'package:wahidz/widgets/appbar_widget.dart';
 import 'package:wahidz/widgets/bottom_nav_bar.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class Cart extends StatelessWidget {
   Cart({super.key});
